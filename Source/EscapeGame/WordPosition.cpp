@@ -2,6 +2,7 @@
 
 
 #include "WordPosition.h"
+#include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 UWordPosition::UWordPosition()
@@ -18,10 +19,19 @@ UWordPosition::UWordPosition()
 void UWordPosition::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Display, TEXT("Just a log , nothing to see!"));
-	UE_LOG(LogTemp, Warning, TEXT("This is a Warning!"));
-	UE_LOG(LogTemp, Error, TEXT("Error!"));
 
+	//FString Log = TEXT("Hello!");
+	//FString* PtrLog = &Log;
+
+	//Log.Len();
+
+	//(*PtrLog).Len();
+	//PtrLog->Len();
+
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), **PtrLog);
+	FString ObjectName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("Object name is: %s"), *ObjectName);
+	//UE_LOG(LogTemp, Warning, TEXT("Object name is: %s"), *GetOwner()->GetName());
 }
 
 
