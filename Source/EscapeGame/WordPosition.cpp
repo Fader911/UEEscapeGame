@@ -20,18 +20,11 @@ void UWordPosition::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//FString Log = TEXT("Hello!");
-	//FString* PtrLog = &Log;
-
-	//Log.Len();
-
-	//(*PtrLog).Len();
-	//PtrLog->Len();
-
-	//UE_LOG(LogTemp, Warning, TEXT("%s"), **PtrLog);
 	FString ObjectName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("Object name is: %s"), *ObjectName);
-	//UE_LOG(LogTemp, Warning, TEXT("Object name is: %s"), *GetOwner()->GetName());
+	//FString ProjectPosition = GetOwner()->GetActorLocation().ToString();
+	FString ProjectPosition = GetOwner()->GetActorTransform().GetLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("Object Position is: %s"), *ProjectPosition);
 }
 
 
