@@ -32,7 +32,7 @@ private:
 	float TargetYaw = 90.f;
 
 	UPROPERTY(EditAnywhere)
-	ATriggerVolume* PessurePlate;
+	ATriggerVolume* PressurePlate;
 
 	UPROPERTY(EditAnywhere)
 	AActor* ActorThatOpens;
