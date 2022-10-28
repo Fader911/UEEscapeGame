@@ -1,7 +1,7 @@
 // This is a project of Mikhail Esikov. All rights reserved.
-
-#include "GameFramework/PlayerController.h"
+#include "DrawDebugHelpers.h"
 #include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
 #include "Grabber.h"
 
 #define OUT
@@ -36,8 +36,24 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	FRotator PlayerViewPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
 		OUT PlayerViewPointLocation, 
-		OUT PlayerViewPointRotation);
-	UE_LOG(LogTemp, Warning, TEXT("Location is %s, Rotation is %s"), *PlayerViewPointLocation.ToString(),*PlayerViewPointRotation.ToString());
+		OUT PlayerViewPointRotation
+	);
 
+	
+	//UE_LOG(LogTemp, Warning, TEXT("Location is %s, Rotation is %s"), *PlayerViewPointLocation.ToString(),*PlayerViewPointRotation.ToString());
+
+	FVector LineTraceDirection = PlayerViewPointRotation.Vector();
+	FVector LineTraceEnd = PlayerViewPointLocation + LineTraceDirection * Reach;
+	DrawDebugLine(
+		GetWorld(),
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FColor(255, 0, 0),
+		false,
+		0.f,
+		0,
+		5.f
+	);
+	
 }
 
